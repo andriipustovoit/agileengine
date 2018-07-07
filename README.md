@@ -2,10 +2,17 @@
 
 Test task implementation for https://agileengine.bitbucket.io/beKIvpUlPMtzhfAy/
 
-To run application:
+To run pre-build application:
 
 ```
 java -jar ae-backend-xml-java-snippets-0.0.1-all.jar <input_origin_file_path> <input_other_sample_file_path> <target-element-id>
+```
+
+To build and run application:
+
+```
+gradlew shadowJar
+java -jar build\libs\ae-backend-xml-java-snippets-0.0.1-all.jar <input_origin_file_path> <input_other_sample_file_path> <target-element-id>
 ```
 
 Where:
