@@ -52,16 +52,16 @@ public class Main {
         return Optional.of(bestCandidate);
     }
 
-    private static Element findElementById(File htmlFile, String targetElementId) {
-        try {
-            Document doc = Jsoup.parse(
-                    htmlFile,
-                    CHARSET_NAME,
-                    htmlFile.getAbsolutePath());
+    private static Element findElementById(File htmlFile, String targetElementId) throws IOException {
+        Document doc = Jsoup.parse(
+                htmlFile,
+                CHARSET_NAME,
+                htmlFile.getAbsolutePath());
 
-            return doc.getElementById(targetElementId);
-        } catch (IOException e) {
-            LOGGER.error("Error reading [{}] file", htmlFile.getAbsolutePath(), e);
+        Element element = doc.getElementById(targetElementId);
+        if (element != null) {
+            return element;
+        } else {
             throw new IllegalArgumentException(String.format("Element with ID '%s' is not found", targetElementId));
         }
     }
